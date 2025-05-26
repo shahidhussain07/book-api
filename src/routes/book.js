@@ -18,11 +18,17 @@ router.get("/", async (req, res) => {
 	try {
 		const { author, genre, page = 1, limit = 10 } = req.query
 		const filter = {}
+
 		if (author) filter.author = new RegExp(author, "i")
 		if (genre) filter.genre = new RegExp(genre, "i")
+
+		const pageNum = parseInt(page)
+		const limitNum = Math.min(parseInt(limit), 50) || 10
+
 		const books = await Book.find(filter)
-			.skip((page - 1) * limit)
-			.limit(+limit)
+			.skip((pageNum - 1) * limitNum)
+			.limit(limitNum)
+
 		res.json(books)
 	} catch (err) {
 		res.status(400).json({ error: err.message })
@@ -35,6 +41,9 @@ router.get("/:id", async (req, res) => {
 		const reviews = await Review.find({ book: book._id })
 		const avgRating =
 			reviews.reduce((a, r) => a + r.rating, 0) / (reviews.length || 1)
+
+		if (!book) return res.status(404).json({ message: "Book not found" })
+
 		res.json({ book, avgRating, reviews })
 	} catch (err) {
 		res.status(400).json({ error: err.message })
