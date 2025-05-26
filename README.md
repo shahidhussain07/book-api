@@ -87,4 +87,4 @@ curl -X POST http://localhost:3000/api/books/<bookId>/reviews \
 
 ## Database Schema
 
-[Open in Google Drive](https://drive.google.com/file/d/FILE_ID/view)
+[Open in Google Drive](https://drive.google.com/file/d/1JtLLPrLMOf8OmISjPaxadzIQcuETohN_/view?usp=sharing)
