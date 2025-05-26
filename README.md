@@ -85,5 +85,6 @@ curl -X POST http://localhost:3000/api/books/<bookId>/reviews \
 - **Password Hashing**: Passwords are hashed using bcrypt before saving to DB.
 - **Minimal Dependencies**: Clean and minimal stack with `express`, `mongoose`, `jsonwebtoken`, and `bcrypt`.
 
+## Database Schema
 
-
+[Open in Google Drive](https://drive.google.com/file/d/FILE_ID/view)
